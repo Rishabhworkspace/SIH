@@ -1,0 +1,186 @@
+import React from 'react';
+import { Gamepad2, Star, Zap, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const Game: React.FC = () => {
+  const games = [
+    {
+      title: 'Breathing Exercise',
+      description: 'Guided breathing patterns to help you relax and reduce anxiety.',
+      icon: Heart,
+      color: 'from-green-400 to-emerald-500',
+      status: 'Coming Soon'
+    },
+    {
+      title: 'Mindful Coloring',
+      description: 'Digital coloring pages designed for stress relief and mindfulness.',
+      icon: Star,
+      color: 'from-purple-400 to-pink-500',
+      status: 'Coming Soon'
+    },
+    {
+      title: 'Memory Zen',
+      description: 'A calming memory game that helps improve focus and reduce stress.',
+      icon: Zap,
+      color: 'from-blue-400 to-cyan-500',
+      status: 'Coming Soon'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6">
+            <Gamepad2 className="h-12 w-12 text-white" />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">
+            Stress-Buster Games
+          </h1>
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Engage with calming, interactive activities designed to help you unwind, reduce stress, and practice mindfulness.
+          </p>
+        </motion.div>
+
+        {/* Coming Soon Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-8 mb-12 text-center text-white"
+        >
+          <h2 className="text-2xl font-bold mb-4">🚀 Exciting Games Coming Soon!</h2>
+          <p className="text-lg opacity-90 mb-4">
+            We're working hard to bring you interactive stress-relief games that will help you relax and recharge.
+          </p>
+          <div className="inline-flex items-center space-x-2 bg-white/20 rounded-lg px-4 py-2">
+            <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+            <span className="font-medium">In Development</span>
+          </div>
+        </motion.div>
+
+        {/* Games Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {games.map((game, index) => (
+            <motion.div
+              key={game.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-600 relative overflow-hidden"
+            >
+              {/* Coming Soon Badge */}
+              <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-400 to-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                {game.status}
+              </div>
+              
+              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${game.color} mb-4`}>
+                <game.icon className="h-6 w-6 text-white" />
+              </div>
+              
+              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">
+                {game.title}
+              </h3>
+              
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                {game.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Temporary Alternative Resources */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-600"
+        >
+          <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 text-center">
+            Meanwhile, Try These Stress-Relief Activities
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-xl">
+              <h4 className="font-semibold text-green-700 dark:text-green-400 mb-3">
+                🧘‍♀️ 4-7-8 Breathing Exercise
+              </h4>
+              <div className="text-slate-600 dark:text-slate-300 space-y-2">
+                <p>1. Inhale through nose for 4 counts</p>
+                <p>2. Hold breath for 7 counts</p>
+                <p>3. Exhale through mouth for 8 counts</p>
+                <p>4. Repeat 4-8 times</p>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+              <h4 className="font-semibold text-blue-700 dark:text-blue-400 mb-3">
+                🌊 Progressive Muscle Relaxation
+              </h4>
+              <div className="text-slate-600 dark:text-slate-300 space-y-2">
+                <p>1. Start with your toes</p>
+                <p>2. Tense muscles for 5 seconds</p>
+                <p>3. Release and relax for 10 seconds</p>
+                <p>4. Move up through your body</p>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+              <h4 className="font-semibold text-purple-700 dark:text-purple-400 mb-3">
+                🎵 Mindful Listening
+              </h4>
+              <div className="text-slate-600 dark:text-slate-300 space-y-2">
+                <p>1. Find a quiet space</p>
+                <p>2. Close your eyes</p>
+                <p>3. Listen to nature sounds</p>
+                <p>4. Focus only on the sounds</p>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl">
+              <h4 className="font-semibold text-yellow-700 dark:text-yellow-400 mb-3">
+                ✍️ Gratitude Journaling
+              </h4>
+              <div className="text-slate-600 dark:text-slate-300 space-y-2">
+                <p>1. Write 3 things you're grateful for</p>
+                <p>2. Be specific about why</p>
+                <p>3. Notice how you feel</p>
+                <p>4. Practice daily for best results</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="text-center mt-12"
+        >
+          <p className="text-slate-600 dark:text-slate-300 mb-4">
+            Want to be notified when our games are ready?
+          </p>
+          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-green-100 to-blue-100 dark:from-slate-800 dark:to-slate-700 rounded-xl p-4">
+            <span className="text-slate-700 dark:text-slate-300">
+              Check back soon for interactive stress-relief games!
+            </span>
+            <div className="flex space-x-1">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Game;
